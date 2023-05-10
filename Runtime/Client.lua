@@ -20,5 +20,6 @@ project "Runtime.Client"
 
 	links {
 		"ThirdParty.spdlog",
-		"ThirdParty.fmt"
+		"ThirdParty.fmt",
+		"Genesis.Client"
 	}

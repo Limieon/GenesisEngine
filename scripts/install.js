@@ -1,7 +1,7 @@
 import FS from 'fs'
-import Path from 'path'
 import Chalk from 'chalk'
-import { spawn } from 'child_process'
+
+import Utils from './Utils.js'
 
 const modules = {
 	spdlog: "https://github.com/Gabime/spdlog",
@@ -17,17 +17,6 @@ for (const m of Object.keys(modules)) {
 		continue
 	}
 
-	await new Promise((res, rej) => {
-		console.log(Chalk.gray(`Installing ${Chalk.magenta(m)}...`))
-
-		const cprocess = spawn('git', ['clone', url, `ThirdParty/${m}`])
-		cprocess.stdout.pipe(process.stdout)
-		cprocess.stderr.pipe(process.stderr)
-		process.stdin.pipe(cprocess.stderr)
-
-		cprocess.on('exit', e => {
-			res()
-		})
-	})
+	await Utils.executeCommand('git', ['clone', url, `ThirdParty/${m}`])
 }
 console.log(Chalk.green('Done!'))
