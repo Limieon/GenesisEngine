@@ -47,7 +47,7 @@ workspace "GenesisEngine"
 	include "ThirdParty/fmt.lua"
 		
 	-- Genesis
-	-- include "Genesis/Core.lua"
+	include "Genesis/Core.lua"
 	-- include "Genesis/Server.lua"
 	include "Genesis/Client.lua"
 	-- include "Genesis/Runtime.lua"
