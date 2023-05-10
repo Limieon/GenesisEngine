@@ -1,0 +1,104 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Client-Debug-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Debug-x64/Runtime.Client/Runtime.Client.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Debug-x64/Runtime.Client",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-debug-x64"
+        },
+        {
+            "name": "Client-Release-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Release-x64/Runtime.Client/Runtime.Client.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Release-x64/Runtime.Client",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-release-x64"
+        },
+        {
+            "name": "Client-Dist-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Dist-x64/Runtime.Client/Runtime.Client.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Dist-x64/Runtime.Client",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-dist-x64"
+        },
+        {
+            "name": "Server-Debug-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Debug-x64/Runtime.Server/Runtime.Server.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Debug-x64/Runtime.Server",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-debug-x64"
+        },
+        {
+            "name": "Server-Release-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Release-x64/Runtime.Server/Runtime.Server.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Release-x64/Runtime.Server",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-release-x64"
+        },
+        {
+            "name": "Server-Dist-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Dist-x64/Runtime.Server/Runtime.Server.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Dist-x64/Runtime.Server",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-dist-x64"
+        },
+        {
+            "name": "Editor-Debug-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Debug-x64/Genesis.Editor/Genesis.Editor.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Debug-x64/Genesis.Editor",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-debug-x64"
+        },
+        {
+            "name": "Editor-Release-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Release-x64/Genesis.Editor/Genesis.Editor.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Release-x64/Genesis.Editor",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-release-x64"
+        },
+        {
+            "name": "Editor-Dist-x64",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows/Dist-x64/Genesis.Editor/Genesis.Editor.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/bin/windows/Dist-x64/Genesis.Editor",
+            "console": "newExternalWindow",
+            "preLaunchTask": "build-dist-x64"
+        }
+    ]
+}
