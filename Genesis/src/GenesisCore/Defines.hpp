@@ -1,7 +1,10 @@
 #pragma once
+#include <algorithm>
 #include <cstdint>
+#include <functional>
 #include <iostream>
 #include <memory>
+#include <sstream>
 #include <string>
 
 typedef uint8_t uint8;
@@ -12,7 +15,13 @@ typedef int8_t int8;
 typedef int16_t int16;
 typedef int32_t int32;
 typedef int64_t int64;
+typedef float float32;
+typedef double float64;
+
 typedef std::string String;
+typedef uint16 KeyCode;
+
+#define GE_BIT(x) (1 << x)
 
 template <typename T>
 using Scope = std::unique_ptr<T>;

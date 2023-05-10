@@ -9,7 +9,11 @@ class RuntimeClient: public ge::client::Application {
 public:
 	RuntimeClient() {
 		ge::core::Logger::init();
+		ge::core::Event* e = new ge::core::KeyDownEvent(ge::Key::E, 7);
+
 		GE_Info("Hello World!");
+		GE_Info("Event: {}, Key: {}, Count: {}", e->getName(), ((ge::core::KeyDownEvent*) e)->getKeyCode(), ((ge::core::KeyDownEvent*) e)->getRepeatCount());
+
 		std::cin.get();
 		ge::core::Logger::release();
 	}
