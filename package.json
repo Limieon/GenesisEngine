@@ -8,8 +8,7 @@
   "scripts": {
     "clean": "node scripts/clean.js",
     "install": "node scripts/install.js",
-    "cloc": "node scripts/cloc.js",
-    "build-bgfx": "node scripts/build/bgfx.js"
+    "cloc": "node scripts/cloc.js"
   },
   "keywords": [],
   "author": "",

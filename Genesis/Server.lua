@@ -1,4 +1,3 @@
-print("-- Genesis.Server")
 
 group "Genesis"
 project "Genesis.Server"

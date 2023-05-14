@@ -1,4 +1,3 @@
-print("-- Runtime.Server")
 
 group "Runtime"
 project "Runtime.Server"

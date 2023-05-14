@@ -1,3 +1,4 @@
+---
 BasedOnStyle: LLVM
 UseTab: ForIndentation
 AlignOperands: DontAlign
@@ -8,18 +9,23 @@ IndentWidth: 4
 TabWidth: 4
 Language: Cpp
 BreakBeforeBraces: Attach
+AllowShortIfStatementsOnASingleLine: false
+IndentCaseLabels: false
 ColumnLimit: 0
 AccessModifierOffset: -4
 NamespaceIndentation: All
 FixNamespaceComments: false
+IndentPPDirectives: None
 PPIndentWidth: -1
 IndentPPDirectives: AfterHash
 PointerAlignment: Left
+AllowShortCaseLabelsOnASingleLine: true
 AllowShortEnumsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
+AlwaysBreakBeforeMultilineStrings: false
 AlignArrayOfStructures: Left
 SpaceAfterCStyleCast: true
 SpaceBeforeRangeBasedForLoopColon: false
@@ -38,4 +44,4 @@ SpacesInLineCommentPrefix:
   Maximum: -1
 AllowShortCaseLabelsOnASingleLine: true
 IndentCaseLabels: true
-Cpp11BracedListStyle: false
+---
