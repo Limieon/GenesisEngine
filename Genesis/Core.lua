@@ -1,3 +1,4 @@
+print("-- Genesis.Core")
 
 group "Genesis"
 project "Genesis.Core"

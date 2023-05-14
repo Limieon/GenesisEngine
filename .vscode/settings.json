@@ -92,5 +92,16 @@
 		"xtr1common": "cpp",
 		"xtree": "cpp",
 		"xutility": "cpp"
-	}
+	},
+	"C_Cpp.default.includePath": [
+		"${workspaceFolder}/Genesis/src/",
+		"${workspaceFolder}/Runtime/src/",
+		"${workspaceFolder}/ThirdParty/spdlog/include/",
+		"${workspaceFolder}/ThirdParty/fmt/include/",
+		"${workspaceFolder}/ThirdParty/bx/include/",
+		"${workspaceFolder}/ThirdParty/bgfx/include/",
+		"${workspaceFolder}/ThirdParty/bimg/include/",
+		"${workspaceFolder}/ThirdParty/glfw/include/",
+		"C:/VulkanSDK/1.3.246.1/Include"
+	]
 }

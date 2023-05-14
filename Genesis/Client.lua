@@ -1,3 +1,4 @@
+print("-- Genesis.Client")
 
 group "Genesis"
 project "Genesis.Client"
@@ -14,5 +15,7 @@ project "Genesis.Client"
 	includedirs {
 		includeDirs["Genesis"],
 		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["fmt"],
+		includeDirs["glm"],
+		includeDirs["glfw"]
 	}

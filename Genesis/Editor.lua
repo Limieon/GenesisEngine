@@ -1,3 +1,4 @@
+print("-- Genesis.Editor")
 
 group "Genesis"
 project "Genesis.Editor"
@@ -11,13 +12,25 @@ project "Genesis.Editor"
 		"%{prj.location}/**.hpp"
 	}
 
+	defines {
+		"GLFW_INCLUDE_NONE"
+	}
+
 	includedirs {
 		includeDirs["Genesis"],
 		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["fmt"],
+		includeDirs["glfw"],
+		includeDirs["vulkan"]
 	}
 
 	links {
-		"spdlog",
-		"fmt"
+		"Genesis.Core",
+		"ThirdParty.spdlog",
+		"ThirdParty.fmt",
+		"ThirdParty.glfw",
+		"vulkan-1.lib"
 	}
+
+	filter "system:windows"
+		links { "user32.lib", "Winmm.lib" }

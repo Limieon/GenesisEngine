@@ -1,3 +1,4 @@
+print("-- Genesis.Runtime")
 
 group "Genesis"
 project "Genesis.Runtime"

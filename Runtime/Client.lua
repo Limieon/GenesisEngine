@@ -1,3 +1,4 @@
+print("-- Runtime.Client")
 
 group "Runtime"
 project "Runtime.Client"
@@ -15,12 +16,17 @@ project "Runtime.Client"
 		includeDirs["Genesis"],
 		includeDirs["Runtime"],
 		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["fmt"],
+		includeDirs["glfw"]
 	}
 
 	links {
 		"ThirdParty.spdlog",
 		"ThirdParty.fmt",
 		"Genesis.Client",
-		"Genesis.Core"
+		"Genesis.Core",
+		"bx.lib",
+		"bimg.lib",
+		"bgfx.lib",
+		"ThirdParty.glfw"
 	}
