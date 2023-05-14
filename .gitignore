@@ -13,7 +13,16 @@ package-lock.json
 # ThirdParty
 ThirdParty/spdlog/
 ThirdParty/fmt/
+ThirdParty/glfw/
+ThirdParty/glm/
+
+# BGFX
+ThirdParty/bx/
+ThirdParty/bimg/
+ThirdParty/bgfx/
 
 # Bin Dirs
 bin/
 bin-int/
+
+lib/

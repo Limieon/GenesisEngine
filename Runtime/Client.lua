@@ -15,12 +15,15 @@ project "Runtime.Client"
 		includeDirs["Genesis"],
 		includeDirs["Runtime"],
 		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["fmt"],
+		includeDirs["glfw"],
+		includeDirs["glm"]
 	}
 
 	links {
 		"ThirdParty.spdlog",
 		"ThirdParty.fmt",
+		"ThirdParty.glfw",
 		"Genesis.Client",
 		"Genesis.Core"
 	}

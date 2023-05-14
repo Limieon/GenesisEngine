@@ -45,6 +45,7 @@ workspace "GenesisEngine"
 	-- ThirdParty
 	include "ThirdParty/spdlog.lua"
 	include "ThirdParty/fmt.lua"
+	include "ThirdParty/glfw.lua"
 		
 	-- Genesis
 	include "Genesis/Core.lua"
