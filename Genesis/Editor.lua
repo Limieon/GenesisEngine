@@ -16,10 +16,17 @@ project "Genesis.Editor"
 		includeDirs["spdlog"],
 		includeDirs["fmt"],
 		includeDirs["glfw"],
-		includeDirs["glm"]
+		includeDirs["glm"],
+		includeDirs["glad"]
 	}
 
 	links {
-		"spdlog",
-		"fmt"
+		"ThirdParty.spdlog",
+		--"ThirdParty.fmt",
+		"ThirdParty.glfw",
+		"Genesis.Core",
+		"bx.lib",
+		"bimg.lib",
+		"bgfx.lib",
+		"d3d12.lib"
 	}

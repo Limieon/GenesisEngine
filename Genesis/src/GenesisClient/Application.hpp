@@ -1,6 +1,5 @@
 #pragma once
 #include "Defines.hpp"
-
 #include "Window.hpp"
 
 int main(int argc, char** argv);
@@ -17,12 +16,19 @@ namespace ge {
 			virtual ~Application();
 			void run();
 
+			void onEvent(ge::core::Event& e);
+
 		private:
 			friend int ::main(int argc, char** argv);
 
-			bool running;
+		private:
+			static Application* instance;
 
-			Window* window;
+			bool running = true;
+			bool minimized = false;
+
+			IWindow* window;
+			float32 lastTime = 0.f;
 		};
 
 		Application* createApplication();

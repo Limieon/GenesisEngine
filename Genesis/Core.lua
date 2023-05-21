@@ -14,5 +14,6 @@ project "Genesis.Core"
 	includedirs {
 		includeDirs["Genesis"],
 		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["fmt"],
+		includeDirs["glm"]
 	}

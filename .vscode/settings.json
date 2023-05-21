@@ -91,6 +91,12 @@
 		"xstring": "cpp",
 		"xtr1common": "cpp",
 		"xtree": "cpp",
-		"xutility": "cpp"
+		"xutility": "cpp",
+		"bitset": "cpp",
+		"cfenv": "cpp",
+		"future": "cpp",
+		"numeric": "cpp",
+		"random": "cpp",
+		"unordered_set": "cpp"
 	}
 }

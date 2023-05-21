@@ -4,8 +4,11 @@ import Chalk from 'chalk'
 import Utils from './Utils.js'
 
 const modules = {
-	spdlog: "https://github.com/Gabime/spdlog",
-	fmt: "https://github.com/fmtlib/fmt"
+	spdlog: 'https://github.com/GMasterHD/spdlog',
+	fmt: 'https://github.com/fmtlib/fmt',
+	glad: 'https://github.com/GMasterHD/glad',
+	glfw: 'https://github.com/glfw/glfw',
+	glm: 'https://github.com/g-truc/glm'
 }
 
 console.log(Chalk.gray('Installing modules...'))

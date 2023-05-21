@@ -15,7 +15,8 @@ project "Runtime.Server"
 		includeDirs["Genesis"],
 		includeDirs["Runtime"],
 		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["fmt"],
+		includeDirs["glm"]
 	}
 
 	links {

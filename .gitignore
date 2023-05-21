@@ -15,6 +15,7 @@ ThirdParty/spdlog/
 ThirdParty/fmt/
 ThirdParty/glfw/
 ThirdParty/glm/
+ThirdParty/glad/
 
 # BGFX
 ThirdParty/bx/

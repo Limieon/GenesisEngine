@@ -9,7 +9,8 @@ project "ThirdParty.spdlog"
 		"%{prj.location}/src/color_sinks.cpp",
 		"%{prj.location}/src/file_sinks.cpp",
 		"%{prj.location}/src/spdlog.cpp",
-		"%{prj.location}/src/stdout_sinks.cpp"
+		"%{prj.location}/src/stdout_sinks.cpp",
+		"%{prj.location}/src/bundled_fmtlib_format.cpp"
 	}
 
 	defines {
@@ -17,6 +18,5 @@ project "ThirdParty.spdlog"
 	}
 
 	includedirs {
-		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["spdlog"]
 	}

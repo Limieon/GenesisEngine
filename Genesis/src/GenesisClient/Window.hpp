@@ -1,30 +1,44 @@
 #pragma once
-#include <GenesisCore/Defines.hpp>
+#include "Defines.hpp"
 
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
+#include <GenesisCore/event/Event.hpp>
 
 namespace ge {
 	namespace client {
 		struct WindowConfiguration {
-			String title = "Genesis Application ";
-			uint16 width = 800;
-			uint16 height = 600;
+			String title;
+			uint32 width, height;
+
+			WindowConfiguration(const String& title = "Genesis Engine", uint32 width = 1280, uint32 height = 720)
+			    : title(title), width(width), height(height) {}
 		};
 
-		class Window {
+		class IWindow {
 		public:
-			Window(const WindowConfiguration& spec);
-			~Window();
+			IWindow() = default;
 
-			void update();
-			GLFWwindow* getHandle() const { return handle; }
+			typedef std::function<void(ge::core::Event&)> EventCallback;
 
-			static void init();
-			static void release();
+			static IWindow* create(const WindowConfiguration& props = WindowConfiguration());
+			virtual ~IWindow() {}
 
-		private:
-			GLFWwindow* handle;
+			virtual void onUpdate() = 0;
+			virtual uint32 getWidth() const = 0;
+			virtual uint32 getHeight() const = 0;
+			virtual float32 getWidthF() const = 0;
+			virtual float32 getHeightF() const = 0;
+
+			// Temporary!!! Will later be handled using WindowCloseEvent!
+			virtual inline bool shouldClose() const = 0;
+
+			virtual void setEventCallback(const EventCallback& func) = 0;
+			virtual void setVSync(bool enable) = 0;
+			virtual bool isVSync() const = 0;
+
+			virtual void setCursorGrabbed(bool grabbed) = 0;
+			virtual bool isCursorGrabbed() const = 0;
+
+			virtual void* getNativeWindow() const = 0;
 		};
 	}
 }
