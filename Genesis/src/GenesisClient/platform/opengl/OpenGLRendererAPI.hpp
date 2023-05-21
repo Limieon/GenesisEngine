@@ -8,6 +8,7 @@ namespace ge {
 		public:
 			void init() override;
 
+			void drawIndexed(const Ref<IVertexArray>& arr, uint32 indexCount) override;
 			void setClearColor(const glm::vec4& color) override;
 			void clear() override;
 

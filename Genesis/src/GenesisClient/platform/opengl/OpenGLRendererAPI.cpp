@@ -11,6 +11,10 @@ namespace ge {
 			glEnable(GL_DEPTH_TEST);
 		}
 
+		void OpenGLRendererAPI::drawIndexed(const Ref<IVertexArray>& arr, uint32 indexCount) {
+			arr->bind();
+			glDrawElements(GL_TRIANGLES, indexCount ? indexCount : arr->getIndexBuffer()->getCount(), GL_UNSIGNED_INT, nullptr);
+		}
 		void OpenGLRendererAPI::setClearColor(const glm::vec4& color) { glClearColor(color.r, color.g, color.b, color.a); }
 		void OpenGLRendererAPI::clear() { glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); }
 

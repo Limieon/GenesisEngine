@@ -1,11 +1,40 @@
 #pragma once
+
+/* ---> C++ Standard <--- */
 #include <algorithm>
+#include <array>
+#include <atomic>
+#include <chrono>
 #include <cstdint>
+#include <format>
 #include <functional>
-#include <iostream>
+#include <iomanip>
+#include <iosfwd>
+#include <iterator>
 #include <memory>
-#include <sstream>
+#include <mutex>
+#include <random>
+#include <stdlib.h>
 #include <string>
+#include <string_view>
+#include <thread>
+#include <tuple>
+#include <type_traits>
+#include <unordered_map>
+#include <unordered_set>
+#include <utility>
+#include <vector>
+
+/* ---> Streams <--- */
+#include <fstream>
+#include <iostream>
+#include <istream>
+#include <ostream>
+#include <sstream>
+
+/* ---> GLM <--- */
+#include <glm/packing.hpp>
+#include <glm/vec3.hpp>
 
 typedef uint8_t uint8;
 typedef uint16_t uint16;

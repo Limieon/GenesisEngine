@@ -1,7 +1,7 @@
 #pragma once
-#include <spdlog/spdlog.h>
-
 #include "Defines.hpp"
+
+#include <spdlog/spdlog.h>
 
 namespace ge {
 	namespace core {
@@ -28,4 +28,16 @@ namespace ge {
 #	define GE_Warn(...) SPDLOG_WARN(__VA_ARGS__)
 #	define GE_Error(...) SPDLOG_ERROR(__VA_ARGS__)
 #	define GE_Fatal(...) SPDLOG_CRITICAL(__VA_ARGS__)
+#endif
+
+#ifndef GE_CONFIG_DIST
+#	define GE_Assert(x, ...)                                                                                                                        \
+		{                                                                                                                                            \
+			if(!(x)) {                                                                                                                               \
+				GE_Fatal("Assertion Triggered: {0}", __VA_ARGS__);                                                                                   \
+				__debugbreak();                                                                                                                      \
+			}                                                                                                                                        \
+		}
+#else
+#	define GE_Assert(x, ...)
 #endif
