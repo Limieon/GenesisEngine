@@ -2,6 +2,9 @@
 #include "Defines.hpp"
 #include "Window.hpp"
 
+#include <GenesisCore/LayerStack.hpp>
+#include <GenesisCore/event/WindowEvent.hpp>
+
 int main(int argc, char** argv);
 
 namespace ge {
@@ -14,9 +17,21 @@ namespace ge {
 		public:
 			Application(const ApplicationConfiguration& appConfig, const WindowConfiguration& windConfig);
 			virtual ~Application();
+
+		private:
 			void run();
 
+			bool onWindowClose(ge::core::WindowCloseEvent& e);
+			bool onWindowResize(ge::core::WindowResizeEvent& e);
+
+		public:
 			void onEvent(ge::core::Event& e);
+
+		public:
+			inline void pushLayer(ge::core::Layer* layer) { layerStack.pushLayer(layer); }
+			inline void pushOverlay(ge::core::Layer* layer) { layerStack.pushOverlay(layer); }
+			inline void popLayer(ge::core::Layer* layer) { layerStack.popLayer(layer); }
+			inline void popOverlay(ge::core::Layer* layer) { layerStack.popOverlay(layer); }
 
 		private:
 			friend int ::main(int argc, char** argv);
@@ -27,8 +42,11 @@ namespace ge {
 			bool running = true;
 			bool minimized = false;
 
-			IWindow* window;
+			ge::core::LayerStack layerStack;
+
 			float32 lastTime = 0.f;
+
+			IWindow* window;
 		};
 
 		Application* createApplication();

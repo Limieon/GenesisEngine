@@ -1,5 +1,6 @@
 #include "Application.hpp"
 
+#include "Platform.hpp"
 #include "renderer/Buffer.hpp"
 #include "renderer/RenderCommand.hpp"
 #include "renderer/RendererAPI.hpp"
@@ -9,11 +10,6 @@
 #include <GenesisCore/Logger.hpp>
 #include <GenesisCore/event/KeyEvent.hpp>
 #include <iostream>
-
-struct Vertex {
-	glm::vec3 pos;
-	glm::vec4 color;
-};
 
 namespace ge {
 	namespace client {
@@ -30,46 +26,50 @@ namespace ge {
 		Application::~Application() { delete window; }
 
 		void Application::onEvent(ge::core::Event& e) {
-			if(e.getEventType() == ge::core::EventType::KeyDown) {
-				auto keyEvent = (ge::core::KeyTypedEvent&) e;
-				GE_Info("Key Down Event Fired: {}", keyEvent.getKeyCode());
-				return;
+			ge::core::EventDispatcher dispatcher(e);
+
+			// Dispatch event directly to internal functions
+			dispatcher.dispatch<ge::core::WindowCloseEvent>(GE_BindEventFunction(Application::onWindowClose));
+			dispatcher.dispatch<ge::core::WindowResizeEvent>(GE_BindEventFunction(Application::onWindowResize));
+
+			// Go through layers until event has been handled
+			for(auto it = layerStack.rbegin(); it != layerStack.rend(); ++it) {
+				if(e.isHandled()) break;
+				(*it)->onEvent(e);
+			}
+		}
+
+		bool Application::onWindowClose(ge::core::WindowCloseEvent& e) {
+			running = false;
+			return true;
+		}
+		bool Application::onWindowResize(ge::core::WindowResizeEvent& e) {
+			if(e.getWidth() == 0 || e.getHeight() == 0) {
+				minimized = true;
+				return false;
 			}
 
-			GE_Info("Event Fired: {}", e.getName());
+			minimized = false;
+			RenderCommand::setViewport(0, 0, e.getWidth(), e.getHeight());
+
+			return false;
 		}
 
 		void Application::run() {
 			GE_Info("Starting application...");
 
-			std::vector<Vertex> vertices;
-			vertices.push_back({{-.5f, -.5f, 0.f}, {1.f, 0.f, 0.f, 1.f}});
-			vertices.push_back({{.5f, -.5f, 0.f}, {0.f, 1.f, 0.f, 1.f}});
-			vertices.push_back({{0.f, .5f, 0.f}, {0.f, 0.f, 1.f, 1.f}});
-
-			uint32 indices[] = {0, 1, 2};
-
-			GE_Info("{} {}", sizeof(vertices), sizeof(Vertex));
-
-			Ref<IVertexBuffer> vb = IVertexBuffer::create(vertices.data(), 3 * sizeof(Vertex));
-			vb->bind();
-			vb->setLayout({{ShaderDataType::FLOAT3, "a_pos"}, {ShaderDataType::FLOAT4, "a_color"}});
-
-			Ref<IIndexBuffer> ib = IIndexBuffer::create(indices, 3);
-			ib->bind();
-
-			Ref<IVertexArray> va = IVertexArray::create();
-			va->addVertexBuffer(vb);
-			va->setIndexBuffer(ib);
-
-			Ref<IShader> shader = IShader::create("shaders/basic.glsl");
-			shader->bind();
-
+			float32 time;
 			RenderCommand::setClearColor({0.f, 0.f, 0.f, 1.f});
 			while(running) {
-				RenderCommand::clear();
+				time = Platform::getTime();
+				ge::core::Timestep timestep = time - lastTime;
+				lastTime = time;
 
-				RenderCommand::drawIndexed(va, 3);
+				if(!minimized) {
+					for(ge::core::Layer* layer: layerStack) {
+						layer->onUpdate(timestep);
+					}
+				}
 
 				window->onUpdate();
 			}
