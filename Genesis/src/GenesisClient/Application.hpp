@@ -28,10 +28,14 @@ namespace ge {
 			void onEvent(ge::core::Event& e);
 
 		public:
+			inline static Application& getInstance() { return *instance; }
+
 			inline void pushLayer(ge::core::Layer* layer) { layerStack.pushLayer(layer); }
 			inline void pushOverlay(ge::core::Layer* layer) { layerStack.pushOverlay(layer); }
 			inline void popLayer(ge::core::Layer* layer) { layerStack.popLayer(layer); }
 			inline void popOverlay(ge::core::Layer* layer) { layerStack.popOverlay(layer); }
+
+			inline IWindow& getWindow() const { return *window; }
 
 		private:
 			friend int ::main(int argc, char** argv);

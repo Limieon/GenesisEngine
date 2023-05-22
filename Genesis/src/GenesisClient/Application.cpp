@@ -18,6 +18,8 @@ namespace ge {
 		Application::Application(const ApplicationConfiguration& appConfig, const WindowConfiguration& windConfig) {
 			ge::core::Logger::init();
 
+			instance = this;
+
 			GE_Info("Intializing Engine Components...");
 			window = IWindow::create(windConfig);
 			window->setEventCallback(GE_BindEventFunction(Application::onEvent));

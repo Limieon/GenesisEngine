@@ -4,6 +4,7 @@
 
 /* ---> / <--- */
 #include "Application.hpp"
+#include "Input.hpp"
 #include "Platform.hpp"
 #include "Window.hpp"
 

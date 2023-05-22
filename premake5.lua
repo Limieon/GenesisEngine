@@ -60,11 +60,13 @@ workspace "GenesisEngine"
 		defines { "GE_PLATFORM_MACOSX" }
 	filter ""
 
+	group "ThirdParty"
 	-- ThirdParty
 	include "ThirdParty/spdlog.lua"
 	-- include "ThirdParty/fmt.lua"
 	include "ThirdParty/glfw.lua"
 	include "ThirdParty/glad.lua"
+	group ""
 		
 	-- Genesis
 	include "Genesis/Core.lua"

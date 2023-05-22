@@ -33,6 +33,10 @@ namespace runtime {
 		shader->bind();
 		va->bind();
 		ge::client::RenderCommand::drawIndexed(va, va->getIndexBuffer()->getCount());
+
+		if(ge::client::Input::isKeyDown(ge::Key::W)) {
+			GE_Info("W is down!");
+		}
 	}
 	void ClientLayer::onDetach() { GE_Info("Client layer detached!"); }
 }
