@@ -18,7 +18,8 @@ project "Runtime.Client"
 		includeDirs["fmt"],
 		includeDirs["glfw"],
 		includeDirs["glm"],
-		includeDirs["glad"]
+		includeDirs["glad"],
+		includeDirs["imgui"]
 	}
 
 	links {
@@ -26,6 +27,8 @@ project "Runtime.Client"
 		--"ThirdParty.fmt",
 		"ThirdParty.glfw",
 		"ThirdParty.glad",
+		"ThirdParty.imgui",
 		"Genesis.Client",
-		"Genesis.Core"
+		"Genesis.Core",
+		"opengl32.lib"
 	}

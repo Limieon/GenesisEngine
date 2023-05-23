@@ -7,6 +7,7 @@ includeDirs["glfw"] = "%{wks.location}/ThirdParty/glfw/include/"
 includeDirs["glm"] = "%{wks.location}/ThirdParty/glm/"
 
 includeDirs["glad"] = "%{wks.location}/ThirdParty/glad/include/"
+includeDirs["imgui"] = "%{wks.location}/ThirdParty/imgui/"
 
 includeDirs["bx"] = "%{wks.location}/ThirdParty/bx/include/"
 includeDirs["bx-platform"] = "%{wks.location}/ThirdParty/bx/include/compat/msvc"

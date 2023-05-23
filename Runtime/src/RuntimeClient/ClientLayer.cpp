@@ -1,5 +1,7 @@
 #include "ClientLayer.hpp"
 
+#include <imgui.h>
+
 struct Vertex {
 	glm::vec3 pos;
 	glm::vec4 color;
@@ -39,4 +41,9 @@ namespace runtime {
 		}
 	}
 	void ClientLayer::onDetach() { GE_Info("Client layer detached!"); }
+
+	void ClientLayer::onImGUIRender() {
+		bool open = true;
+		ImGui::ShowDemoWindow(&open);
+	}
 }

@@ -24,6 +24,9 @@ namespace ge {
 			window = IWindow::create(windConfig);
 			window->setEventCallback(GE_BindEventFunction(Application::onEvent));
 			window->setVSync(true);
+
+			imGuiLayer = new ImGUILayer();
+			layerStack.pushOverlay(imGuiLayer);
 		}
 		Application::~Application() { delete window; }
 
@@ -71,6 +74,14 @@ namespace ge {
 					for(ge::core::Layer* layer: layerStack) {
 						layer->onUpdate(timestep);
 					}
+				}
+
+				{
+					imGuiLayer->begin();
+					for(ge::core::Layer* layer: layerStack) {
+						layer->onImGUIRender();
+					}
+					imGuiLayer->end();
 				}
 
 				window->onUpdate();

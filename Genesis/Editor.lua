@@ -17,7 +17,8 @@ project "Genesis.Editor"
 		includeDirs["fmt"],
 		includeDirs["glfw"],
 		includeDirs["glm"],
-		includeDirs["glad"]
+		includeDirs["glad"],
+		includeDirs["imgui"]
 	}
 
 	links {

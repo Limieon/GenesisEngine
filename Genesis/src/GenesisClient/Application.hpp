@@ -1,6 +1,7 @@
 #pragma once
-#include "Defines.hpp"
-#include "Window.hpp"
+#include "GenesisClient/Defines.hpp"
+#include "GenesisClient/Window.hpp"
+#include "GenesisClient/imgui/ImGUILayer.hpp"
 
 #include <GenesisCore/LayerStack.hpp>
 #include <GenesisCore/event/WindowEvent.hpp>
@@ -46,6 +47,7 @@ namespace ge {
 			bool running = true;
 			bool minimized = false;
 
+			ImGUILayer* imGuiLayer;
 			ge::core::LayerStack layerStack;
 
 			float32 lastTime = 0.f;

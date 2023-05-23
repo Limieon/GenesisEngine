@@ -9,11 +9,14 @@ workspace "GenesisEngine"
 	systemversion "latest"
 
 	if renderingAPI == "opengl" then
-		defines {"GE_RENDERINGAPI_OPENGL"}
+		defines { "GE_RENDERINGAPI_OPENGL" }
 	end
 
 	-- Global Defines
-	--defines { "SPDLOG_FMT_EXTERNAL" }
+	defines { 
+		--"SPDLOG_FMT_EXTERNAL",
+		"IMGUI_IMPL_OPENGL_LOADER_GLAD"
+	}
 
 	staticruntime "On"
 
@@ -66,6 +69,7 @@ workspace "GenesisEngine"
 	-- include "ThirdParty/fmt.lua"
 	include "ThirdParty/glfw.lua"
 	include "ThirdParty/glad.lua"
+	include "ThirdParty/imgui.lua"
 	group ""
 		
 	-- Genesis

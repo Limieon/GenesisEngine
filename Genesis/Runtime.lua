@@ -15,5 +15,6 @@ project "Genesis.Runtime"
 		includeDirs["Genesis"],
 		includeDirs["spdlog"],
 		includeDirs["fmt"],
-		includeDirs["glm"]
+		includeDirs["glm"],
+		includeDirs["imgui"]
 	}

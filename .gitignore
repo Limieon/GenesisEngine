@@ -16,6 +16,7 @@ ThirdParty/fmt/
 ThirdParty/glfw/
 ThirdParty/glm/
 ThirdParty/glad/
+ThirdParty/imgui/
 
 # BGFX
 ThirdParty/bx/

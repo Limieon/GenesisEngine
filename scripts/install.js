@@ -8,7 +8,8 @@ const modules = {
 	fmt: 'https://github.com/fmtlib/fmt',
 	glad: 'https://github.com/GMasterHD/glad',
 	glfw: 'https://github.com/glfw/glfw',
-	glm: 'https://github.com/g-truc/glm'
+	glm: 'https://github.com/g-truc/glm',
+	imgui: 'https://github.com/ocornut/imgui;docking'
 }
 
 console.log(Chalk.gray('Installing modules...'))
@@ -17,6 +18,13 @@ for (const m of Object.keys(modules)) {
 
 	if (FS.existsSync(`ThirdParty/${m}`)) {
 		console.log(Chalk.yellow(`Skipping ${Chalk.magenta(m)} because directory already exists!`))
+		continue
+	}
+
+	if (url.includes(';')) {
+		const split = url.split(';')
+
+		await Utils.executeCommand('git', ['clone', '-b', split[1], split[0], `ThirdParty/${m}`])
 		continue
 	}
 

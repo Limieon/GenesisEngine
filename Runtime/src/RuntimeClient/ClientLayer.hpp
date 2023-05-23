@@ -11,6 +11,8 @@ namespace runtime {
 		void onUpdate(ge::core::Timestep ts) override;
 		void onDetach() override;
 
+		void onImGUIRender() override;
+
 	private:
 		Ref<ge::client::IVertexBuffer> vb;
 		Ref<ge::client::IIndexBuffer> ib;
