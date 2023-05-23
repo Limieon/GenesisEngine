@@ -14,7 +14,6 @@ workspace "GenesisEngine"
 
 	-- Global Defines
 	defines { 
-		--"SPDLOG_FMT_EXTERNAL",
 		"IMGUI_IMPL_OPENGL_LOADER_GLAD"
 	}
 
@@ -66,7 +65,7 @@ workspace "GenesisEngine"
 	group "ThirdParty"
 	-- ThirdParty
 	include "ThirdParty/spdlog.lua"
-	-- include "ThirdParty/fmt.lua"
+	include "ThirdParty/fmt.lua"
 	include "ThirdParty/glfw.lua"
 	include "ThirdParty/glad.lua"
 	include "ThirdParty/imgui.lua"

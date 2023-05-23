@@ -1,7 +1,6 @@
 
 includeDirs = {}
---includeDirs["fmt"] = "%{wks.location}/ThirdParty/fmt/include/"
-includeDirs["fmt"] = ""
+includeDirs["fmt"] = "%{wks.location}/ThirdParty/fmt/include/"
 includeDirs["spdlog"] = "%{wks.location}/ThirdParty/spdlog/include/"
 includeDirs["glfw"] = "%{wks.location}/ThirdParty/glfw/include/"
 includeDirs["glm"] = "%{wks.location}/ThirdParty/glm/"
