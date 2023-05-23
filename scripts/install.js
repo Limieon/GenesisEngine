@@ -9,7 +9,8 @@ const modules = {
 	glad: 'https://github.com/GMasterHD/glad',
 	glfw: 'https://github.com/glfw/glfw',
 	glm: 'https://github.com/g-truc/glm',
-	imgui: 'https://github.com/ocornut/imgui;docking'
+	imgui: 'https://github.com/ocornut/imgui;docking',
+	stb: 'https://github.com/nothings/stb'
 }
 
 console.log(Chalk.gray('Installing modules...'))

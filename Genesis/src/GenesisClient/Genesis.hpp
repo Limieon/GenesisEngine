@@ -14,4 +14,5 @@
 #include "renderer/RenderCommand.hpp"
 #include "renderer/RendererAPI.hpp"
 #include "renderer/Shader.hpp"
+#include "renderer/Texture.hpp"
 #include "renderer/VertexArray.hpp"

@@ -18,5 +18,6 @@ project "Genesis.Client"
 		includeDirs["glfw"],
 		includeDirs["glm"],
 		includeDirs["glad"],
-		includeDirs["imgui"]
+		includeDirs["imgui"],
+		includeDirs["stb"]
 	}

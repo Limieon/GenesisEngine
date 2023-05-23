@@ -18,5 +18,6 @@ namespace runtime {
 		Ref<ge::client::IIndexBuffer> ib;
 		Ref<ge::client::IVertexArray> va;
 		Ref<ge::client::IShader> shader;
+		Ref<ge::client::ITexture> texture;
 	};
 }

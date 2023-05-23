@@ -14,5 +14,7 @@ includeDirs["bx-platform"] = "%{wks.location}/ThirdParty/bx/include/compat/msvc"
 includeDirs["bimg"] = "%{wks.location}/ThirdParty/bimg/include/"
 includeDirs["bgfx"] = "%{wks.location}/ThirdParty/bgfx/include/"
 
+includeDirs["stb"] = "%{wks.location}/ThirdParty/stb/"
+
 includeDirs["Genesis"] = "%{wks.location}/Genesis/src/"
 includeDirs["Runtime"] = "%{wks.location}/Runtime/src/"

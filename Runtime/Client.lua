@@ -19,7 +19,8 @@ project "Runtime.Client"
 		includeDirs["glfw"],
 		includeDirs["glm"],
 		includeDirs["glad"],
-		includeDirs["imgui"]
+		includeDirs["imgui"],
+		includeDirs["stb"]
 	}
 
 	links {

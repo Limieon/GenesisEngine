@@ -18,6 +18,8 @@ namespace ge {
 		Application::Application(const ApplicationConfiguration& appConfig, const WindowConfiguration& windConfig) {
 			ge::core::Logger::init();
 
+			GE_Assert(!instance, "There can only be one application instance!");
+
 			instance = this;
 
 			GE_Info("Intializing Engine Components...");
