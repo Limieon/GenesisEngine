@@ -5,19 +5,17 @@
 namespace runtime {
 	class ClientLayer: public ge::core::Layer {
 	public:
-		ClientLayer(): Layer("ClientLayer") {}
+		ClientLayer(): Layer("ClientLayer"), camera(16.f / 9.f) {}
 
 		void onAttach() override;
 		void onUpdate(ge::core::Timestep ts) override;
 		void onDetach() override;
 
 		void onImGUIRender() override;
+		void onEvent(ge::core::Event& e) override;
 
 	private:
-		Ref<ge::client::IVertexBuffer> vb;
-		Ref<ge::client::IIndexBuffer> ib;
-		Ref<ge::client::IVertexArray> va;
-		Ref<ge::client::IShader> shader;
-		Ref<ge::client::ITexture> texture;
+		ge::client::OrthographicCameraController camera;
+		Ref<ge::client::ITexture2D> texture;
 	};
 }

@@ -3,6 +3,7 @@
 #include "Platform.hpp"
 #include "renderer/Buffer.hpp"
 #include "renderer/RenderCommand.hpp"
+#include "renderer/Renderer.hpp"
 #include "renderer/RendererAPI.hpp"
 #include "renderer/Shader.hpp"
 #include "renderer/VertexArray.hpp"
@@ -26,6 +27,8 @@ namespace ge {
 			window = IWindow::create(windConfig);
 			window->setEventCallback(GE_BindEventFunction(Application::onEvent));
 			window->setVSync(true);
+
+			Renderer::init();
 
 			imGuiLayer = new ImGUILayer();
 			layerStack.pushOverlay(imGuiLayer);

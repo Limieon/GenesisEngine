@@ -50,13 +50,25 @@ typedef double float64;
 typedef std::string String;
 typedef uint16 KeyCode;
 
+/* ---> Util Macros <--- */
 #define GE_BIT(x) (1 << x)
 
+// Returns the smaller values of the two
+// WARNING: Macro based, can produce errors
+#define GE_Min(left, right) left > right ? right : left
+// Returns the greater values of the two
+// WARNING: Macro based, can produce errors
+#define GE_Max(left, right) left < right ? right : left
+// Returns max if the value is bigger than max, min if the value is less than min, value if the value is between min and max
+// WARNING: Macro based, can produce errors
+#define GE_Clamp(value, min, max) (value > max) ? max : (value < min) ? min : value
+
+// Bind a event function
+#define GE_BindEventFunction(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }
+
+/* ---> Memory <--- */
 template<typename T> using Scope = std::unique_ptr<T>;
 template<typename T, typename... Args> constexpr Scope<T> createScope(Args&&... args) { return std::make_unique<T>(std::forward<Args>(args)...); }
 
 template<typename T> using Ref = std::shared_ptr<T>;
 template<typename T, typename... Args> constexpr Ref<T> createRef(Args&&... args) { return std::make_shared<T>(std::forward<Args>(args)...); }
-
-// Bind a event function
-#define GE_BindEventFunction(fn) [this](auto&&... args) -> decltype(auto) { return this->fn(std::forward<decltype(args)>(args)...); }

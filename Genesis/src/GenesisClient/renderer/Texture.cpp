@@ -10,6 +10,7 @@ namespace ge {
 				case RendererAPI::API::NONE: GE_Assert(false, "RendererAPI::None is currently not supported!");
 				case RendererAPI::API::OpenGL: return createRef<OpenGLTexture2D>(path);
 			}
+			return nullptr;
 		}
 
 		Ref<ITexture2D> ITexture2D::create(uint32 width, uint32 height) {
@@ -17,6 +18,7 @@ namespace ge {
 				case RendererAPI::API::NONE: GE_Assert(false, "RendererAPI::None is currently not supported!");
 				case RendererAPI::API::OpenGL: return createRef<OpenGLTexture2D>(width, height);
 			}
+			return nullptr;
 		}
 	}
 }
