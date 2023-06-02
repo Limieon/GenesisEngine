@@ -31,5 +31,6 @@ project "Runtime.Client"
 		"ThirdParty.imgui",
 		"Genesis.Client",
 		"Genesis.Core",
+		"Genesis.Server",
 		"opengl32.lib"
 	}

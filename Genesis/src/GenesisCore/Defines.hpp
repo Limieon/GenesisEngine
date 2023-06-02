@@ -50,6 +50,11 @@ typedef double float64;
 typedef std::string String;
 typedef uint16 KeyCode;
 
+/// @brief Voxel ID
+typedef uint32 VoxelI_t;
+/// @brief Voxel Meta Data
+typedef uint32 VoxelM_t;
+
 /* ---> Util Macros <--- */
 #define GE_BIT(x) (1 << x)
 

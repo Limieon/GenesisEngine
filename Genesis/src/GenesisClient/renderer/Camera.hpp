@@ -5,41 +5,53 @@
 
 namespace ge {
 	namespace client {
-		class OrthographicCamera {
+		class Camera {
 		public:
-			OrthographicCamera(float32 left, float32 right, float32 bottom, float32 top);
-			void setProjection(float32 left, float32 right, float32 bottom, float32 top);
-
-			void setPosition(const glm::vec3& position) {
-				this->position = position;
-				update();
-			}
-			void setRotation(const float32 rotation) {
-				this->rotation = rotation;
-				update();
-			}
-
-			inline const glm::vec3& getPosition() const { return position; }
-			inline float32 getRotation() const { return rotation; }
+			Camera() {}
+			Camera(glm::mat4 projMatrix, glm::mat4 viewMatrix, glm::vec3 pos): projectionMatrix(projMatrix), viewMatrix(viewMatrix), position(pos) {}
 
 			inline const glm::mat4& getProjectionMatrix() const { return projectionMatrix; }
 			inline const glm::mat4& getViewMatrix() const { return viewMatrix; }
 			inline const glm::mat4& getViewProjectionMatrix() const { return viewProjectionMatrix; }
 
-		private:
-			void update();
+			inline const glm::vec3& getPosition() const { return position; }
 
-		private:
+			void setPosition(const glm::vec3& position) {
+				this->position = position;
+				update();
+			}
+
+			virtual void update() = 0;
+
+		protected:
 			glm::mat4 projectionMatrix;
 			glm::mat4 viewMatrix;
 			glm::mat4 viewProjectionMatrix;
 
 			glm::vec3 position;
+		};
+
+		class OrthographicCamera: public Camera {
+		public:
+			OrthographicCamera(float32 left, float32 right, float32 bottom, float32 top);
+			void setProjection(float32 left, float32 right, float32 bottom, float32 top);
+
+			void setRotation(const float32 rotation) {
+				this->rotation = rotation;
+				update();
+			}
+
+			inline float32 getRotation() const { return rotation; }
+
+		private:
+			void update() override;
+
+		private:
 			float32 rotation = 0.f;
 		};
 
 		/// A free cam, useful for debugging
-		class PerspectiveCamera {
+		class PerspectiveCamera: public Camera {
 		public:
 			PerspectiveCamera(float32 aspectRatio, float32 fov);
 			void setPerspective(float32 aspectRatio, float32 fov);

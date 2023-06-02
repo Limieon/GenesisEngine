@@ -1,5 +1,7 @@
 #pragma once
+#include "Buffer.hpp"
 #include "GenesisClient/Defines.hpp"
+#include "Shader.hpp"
 #include "VertexArray.hpp"
 
 #include <glm/glm.hpp>

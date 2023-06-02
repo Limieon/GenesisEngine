@@ -119,6 +119,8 @@ namespace ge {
 			size_t dataSize = (uint8*) data->quadVertexBufferPtr - (uint8*) data->quadVertexBufferBase;
 			data->quadVertexBuffer->setData(data->quadVertexBufferBase, dataSize);
 
+			data->quadVertexArray->getIndexBuffer()->bind();
+			data->texturedShader->bind();
 			data->texture->bind();
 			RenderCommand::drawIndexed(data->quadVertexArray, data->quadIndexCount);
 			stats->drawCalls++;

@@ -4,7 +4,6 @@
 
 struct Vertex {
 	glm::vec3 pos;
-	glm::vec2 uv;
 	glm::vec4 color;
 };
 
@@ -13,17 +12,22 @@ namespace runtime {
 		GE_Info("Client layer attached!");
 
 		ge::client::RenderCommand::setClearColor({0.f, 0.f, 0.f, 1.f});
+
 		texture = ge::client::ITexture2D::create("textures/texture.png");
+
+		ge::server::Voxel voxel("voxel");
+		ge::server::GameRegistry::registerVoxel(&voxel);
+		ge::server::GameRegistry::debugPrintData();
 	}
 	void ClientLayer::onUpdate(ge::core::Timestep ts) {
 		ge::client::RenderCommand::clear();
-		ge::client::Renderer2D::resetStats();
 		camera.onUpdate(ts);
 
+		ge::client::Renderer2D::resetStats();
 		ge::client::Renderer2D::begin(camera.getCamera());
-		for(uint32 x = 0; x < 200; ++x) {
-			for(uint32 y = 0; y < 200; ++y) {
-				ge::client::Renderer2D::drawQuad({x, y}, {0.9f, 0.9f}, {x / 100.f, 1.f, y / 100.f, 1.f});
+		for(uint32 x = 0; x < 300; ++x) {
+			for(uint32 y = 0; y < 300; ++y) {
+				ge::client::Renderer2D::drawQuad({x, y}, {0.9f, 0.9f}, texture, {x / 300.f, 0.f, y / 300.f, 1.f});
 			}
 		}
 		ge::client::Renderer2D::end();

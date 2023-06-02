@@ -10,6 +10,7 @@
 
 #include <GenesisCore/Logger.hpp>
 #include <GenesisCore/event/KeyEvent.hpp>
+#include <GenesisServer/Server.hpp>
 #include <iostream>
 
 namespace ge {
@@ -28,7 +29,11 @@ namespace ge {
 			window->setEventCallback(GE_BindEventFunction(Application::onEvent));
 			window->setVSync(true);
 
+			GE_Info("Initializing Renderer components...");
 			Renderer::init();
+
+			GE_Info("Initializing Server components...");
+			ge::server::Server::init();
 
 			imGuiLayer = new ImGUILayer();
 			layerStack.pushOverlay(imGuiLayer);
@@ -92,6 +97,7 @@ namespace ge {
 				window->onUpdate();
 			}
 
+			ge::server::Server::release();
 			ge::core::Logger::release();
 		}
 	}

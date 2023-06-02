@@ -14,6 +14,7 @@
 #include "renderer/Camera.hpp"
 #include "renderer/GraphicsContext.hpp"
 #include "renderer/RenderCommand.hpp"
+#include "renderer/Renderer.hpp"
 #include "renderer/Renderer2D.hpp"
 #include "renderer/RendererAPI.hpp"
 #include "renderer/Shader.hpp"

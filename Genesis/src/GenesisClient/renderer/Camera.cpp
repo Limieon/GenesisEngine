@@ -8,9 +8,8 @@ namespace ge {
 		/***********************
 		 * Orthographic Camera *
 		 ***********************/
-
 		OrthographicCamera::OrthographicCamera(float32 left, float32 right, float32 bottom, float32 top)
-		    : projectionMatrix(glm::ortho(left, right, bottom, top, -1.f, 1.f)), viewMatrix(1.f), position(0.f) {
+		    : Camera(glm::ortho(left, right, bottom, top, -1.f, 1.f), glm::mat4(1.f), glm::vec3(0.f)) {
 			viewProjectionMatrix = projectionMatrix * viewMatrix;
 		}
 
@@ -29,7 +28,6 @@ namespace ge {
 		/**********************
 		 * Perspective Camera *
 		 **********************/
-
 		PerspectiveCamera::PerspectiveCamera(float32 aspectRatio, float32 fov) { setPerspective(aspectRatio, fov); }
 		void PerspectiveCamera::setPerspective(float32 aspectRatio, float32 fov) {
 			this->aspectRatio = aspectRatio;

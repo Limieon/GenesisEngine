@@ -73,7 +73,7 @@ workspace "GenesisEngine"
 		
 	-- Genesis
 	include "Genesis/Core.lua"
-	-- include "Genesis/Server.lua"
+	include "Genesis/Server.lua"
 	include "Genesis/Client.lua"
 	-- include "Genesis/Runtime.lua"
 	include "Genesis/Editor.lua"
