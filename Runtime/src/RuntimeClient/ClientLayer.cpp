@@ -16,8 +16,15 @@ namespace runtime {
 		texture = ge::client::ITexture2D::create("textures/texture.png");
 
 		ge::server::Voxel voxel("voxel");
+		ge::server::Voxel voxel2("voxel2");
+		ge::server::Voxel voxel3("voxel3");
+
 		ge::server::GameRegistry::registerVoxel(&voxel);
+		ge::server::GameRegistry::registerVoxel(&voxel2);
+		ge::server::GameRegistry::registerVoxel(&voxel3);
 		ge::server::GameRegistry::debugPrintData();
+
+		GE_Info("VoxelID: {}", ge::server::GameRegistry::getVoxelID(voxel2.getUnlocalizedName()));
 	}
 	void ClientLayer::onUpdate(ge::core::Timestep ts) {
 		ge::client::RenderCommand::clear();
