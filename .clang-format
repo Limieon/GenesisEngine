@@ -9,6 +9,7 @@ AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: Always
 AllowShortLambdasOnASingleLine: All
 AllowShortLoopsOnASingleLine: true
+AlwaysBreakTemplateDeclarations: true
 BreakBeforeBraces: Attach
 ColumnLimit: 150
 AlignArrayOfStructures: None

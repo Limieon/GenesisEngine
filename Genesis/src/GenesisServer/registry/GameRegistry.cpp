@@ -9,7 +9,7 @@ namespace ge {
 		void GameRegistry::init() { vData = new VoxelData; }
 		void GameRegistry::release() { delete vData; }
 
-		void GameRegistry::registerVoxel(const Voxel* voxel) {
+		void GameRegistry::registerVoxel(Voxel* voxel) {
 			VoxelI_t index = vData->array.size();
 			vData->array.push_back(voxel);
 			vData->map.insert(std::pair<const String&, uint32>(voxel->getUnlocalizedName(), index));

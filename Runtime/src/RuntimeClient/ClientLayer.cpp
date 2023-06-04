@@ -15,16 +15,27 @@ namespace runtime {
 
 		texture = ge::client::ITexture2D::create("textures/texture.png");
 
-		ge::server::Voxel voxel("voxel");
-		ge::server::Voxel voxel2("voxel2");
-		ge::server::Voxel voxel3("voxel3");
+		ge::server::Voxel* voxel = new ge::server::Voxel("voxel");
+		ge::server::Voxel* voxel2 = new ge::server::Voxel("voxel2");
+		ge::server::Voxel* voxel3 = new ge::server::Voxel("voxel3");
 
-		ge::server::GameRegistry::registerVoxel(&voxel);
-		ge::server::GameRegistry::registerVoxel(&voxel2);
-		ge::server::GameRegistry::registerVoxel(&voxel3);
+		ge::server::GameRegistry::registerVoxel(voxel);
+		ge::server::GameRegistry::registerVoxel(voxel2);
+		ge::server::GameRegistry::registerVoxel(voxel3);
 		ge::server::GameRegistry::debugPrintData();
 
-		GE_Info("VoxelID: {}", ge::server::GameRegistry::getVoxelID(voxel2.getUnlocalizedName()));
+		GE_Info("VoxelID: {}", ge::server::GameRegistry::getVoxelID(voxel2->getUnlocalizedName()));
+
+		ge::server::Chunk chunk;
+		chunk.set(3, 2, 5, ge::server::GameRegistry::getVoxelID(voxel3->getUnlocalizedName()));
+		GE_Info("Voxel [3, 2, 5]: {}", ge::server::GameRegistry::getUnlocalizedName(chunk.getVoxel(3, 2, 5)));
+
+		GE_Info(voxel->getUnlocalizedName());
+
+		ge::server::GameRegistry::release();
+		delete voxel;
+		delete voxel2;
+		delete voxel3;
 	}
 	void ClientLayer::onUpdate(ge::core::Timestep ts) {
 		ge::client::RenderCommand::clear();

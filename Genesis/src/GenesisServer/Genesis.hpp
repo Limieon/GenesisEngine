@@ -5,3 +5,6 @@
 
 /* ---> /voxel <--- */
 #include "GenesisServer/voxel/Voxel.hpp"
+
+/* ---> /world <--- */
+#include "GenesisServer/world/Chunk.hpp"
