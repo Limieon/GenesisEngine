@@ -34,7 +34,8 @@ namespace ge {
 #	define GE_Assert(x, ...)                                                                                                                        \
 		{                                                                                                                                            \
 			if(!(x)) {                                                                                                                               \
-				GE_Fatal("Assertion Triggered: {0}", __VA_ARGS__);                                                                                   \
+				GE_Fatal("Assertion Triggered:");                                                                                                    \
+				GE_Fatal(__VA_ARGS__);                                                                                                               \
 				__debugbreak();                                                                                                                      \
 			}                                                                                                                                        \
 		}

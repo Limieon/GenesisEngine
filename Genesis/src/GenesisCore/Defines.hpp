@@ -51,7 +51,7 @@ typedef std::string String;
 typedef uint16 KeyCode;
 
 /// @brief Voxel ID
-typedef uint32 VoxelI_t;
+typedef uint16 VoxelI_t;
 /// @brief Voxel Meta
 typedef uint8 VoxelM_t;
 
@@ -68,7 +68,7 @@ namespace ge {
 	constexpr uint32 WORLD_HEIGHT = CHUNK_SIZE * CHUNK_WORLD_HEIGHT;
 
 	/// @brief The amount of voxels in a chunk column
-	constexpr uint32 CHUNK_COLUMN_VOLUME = CHUNK_VOLUME * CHUNK_WORLD_HEIGHT;
+	constexpr uint32 CHUNK_LAYER_VOLUME = CHUNK_VOLUME * CHUNK_WORLD_HEIGHT;
 
 	/// @brief The size in bytes of a voxel and it's metadata
 	constexpr size_t VOXEL_PAIR_SIZE_BYTES = sizeof(VoxelI_t) + sizeof(VoxelM_t);
@@ -77,14 +77,69 @@ namespace ge {
 	constexpr size_t CHUNK_SIZE_BYTES = CHUNK_VOLUME * VOXEL_PAIR_SIZE_BYTES;
 	/// @brief The size in bytes of a chunk column
 	constexpr size_t CHUNK_COLUMN_SIZE_BYTES = CHUNK_VOLUME * CHUNK_WORLD_HEIGHT * VOXEL_PAIR_SIZE_BYTES;
+
+	/**
+	 * @brief Checks if a coordinate is inside a specific bound
+	 *
+	 * @tparam T the datatype to check
+	 * @param x The x coord
+	 * @param y The y coord
+	 * @param z The z coord
+	 * @param minX Min x (inclusive)
+	 * @param minY Min y (inclusive)
+	 * @param minZ Min z (inclusive)
+	 * @param maxX Max x (exclusive)
+	 * @param maxY Max y (exclusive)
+	 * @param maxZ Max z (exclusive)
+	 * @return true if coordinate is in bound
+	 */
+	template<typename T>
+	static inline bool checkBounds(T x, T y, T z, T minX, T minY, T minZ, T maxX, T maxY, T maxZ) {
+		return (x >= minX && x < maxX) && (y >= minY && y < maxY) && (z >= minZ && z < maxZ);
+	}
+	/**
+	 * @brief Checks if a coordinate is inside a specific bound
+	 *
+	 * @tparam T the datatype to check
+	 * @param x The x coord
+	 * @param y The y coord
+	 * @param z The z coord
+	 * @param size The size of the bound (maxX, maxY and maxZ exclusive)
+	 * @return true if coordinate is in bound
+	 */
+	template<typename T>
+	static inline bool checkBounds(T x, T y, T z, T size) {
+		return checkBounds<T>(x, y, z, 0, 0, 0, size, size, size);
+	}
 }
 
 #define GE_CheckChunkBounds(x, y, z) (x >= 0 && x < ge::CHUNK_SIZE) && (y >= 0 && y < ge::CHUNK_SIZE) && (z >= 0 && z < ge::CHUNK_SIZE)
-#define GE_CheckChunkColumnBounds(x, y, z) (x >= 0 && x < ge::CHUNK_SIZE) && y >= 0 && (y < ge::WORLD_HEIGHT) && (z >= 0 && z < ge::CHUNK_SIZE)
+#define GE_CheckChunkLayerBounds(x, y, z) (x >= 0 && x < ge::CHUNK_SIZE) && y >= 0 && (y < ge::WORLD_HEIGHT) && (z >= 0 && z < ge::CHUNK_SIZE)
 
 /* ---> Vectors <--- */
 typedef glm::vec<3, uint32, glm::defaultp> uvec3;
 typedef glm::vec<3, uint8, glm::defaultp> u8vec3;
+typedef glm::vec<2, int32, glm::defaultp> ivec2;
+
+typedef glm::ivec3 ivec3;
+
+/* ---> Poisitions <--- */
+namespace ge {
+	struct ChunkPos2 {
+		ChunkPos2(uint32 x, uint32 y): x(x), z(z) {}
+
+		uint32 x, z;
+	};
+
+	struct ChunkPos3 {
+		ChunkPos3(ChunkPos2 pos, uint8 y): pos(pos), y(y) {}
+
+		static ChunkPos2 asChunkPos2(ChunkPos3 pos) { return pos.pos; }
+
+		ChunkPos2 pos;
+		uint8 y;
+	};
+}
 
 /* ---> Util Macros <--- */
 #define GE_BIT(x) (1 << x)

@@ -8,3 +8,4 @@
 
 /* ---> /world <--- */
 #include "GenesisServer/world/Chunk.hpp"
+#include "GenesisServer/world/ChunkLayer.hpp"

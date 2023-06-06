@@ -26,9 +26,10 @@ namespace runtime {
 
 		GE_Info("VoxelID: {}", ge::server::GameRegistry::getVoxelID(voxel2->getUnlocalizedName()));
 
-		ge::server::Chunk chunk;
-		chunk.set(3, 2, 5, ge::server::GameRegistry::getVoxelID(voxel3->getUnlocalizedName()));
-		GE_Info("Voxel [3, 2, 5]: {}", ge::server::GameRegistry::getUnlocalizedName(chunk.getVoxel(3, 2, 5)));
+		ge::server::ChunkLayer layer({0, 0});
+		layer.reserveChunksUntil(1);
+		layer.set(27, 34, 31, ge::server::GameRegistry::getVoxelID(voxel3->getUnlocalizedName()));
+		GE_Info("Voxel [27, 34, 31]: {}", ge::server::GameRegistry::getUnlocalizedName(layer.getVoxel(27, 34, 31)));
 
 		GE_Info(voxel->getUnlocalizedName());
 
@@ -43,11 +44,7 @@ namespace runtime {
 
 		ge::client::Renderer2D::resetStats();
 		ge::client::Renderer2D::begin(camera.getCamera());
-		for(uint32 x = 0; x < 300; ++x) {
-			for(uint32 y = 0; y < 300; ++y) {
-				ge::client::Renderer2D::drawQuad({x, y}, {0.9f, 0.9f}, texture, {x / 300.f, 0.f, y / 300.f, 1.f});
-			}
-		}
+		ge::client::Renderer2D::drawQuad({2, 1}, {1, 1}, texture);
 		ge::client::Renderer2D::end();
 	}
 	void ClientLayer::onDetach() { GE_Info("Client layer detached!"); }

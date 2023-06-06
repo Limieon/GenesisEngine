@@ -1,10 +1,12 @@
 #include "Chunk.hpp"
 
+#include "ChunkLayer.hpp"
+
 #include <GenesisCore/Logger.hpp>
 
 namespace ge {
 	namespace server {
-		Chunk::Chunk() {}
+		Chunk::Chunk(ChunkLayer* layer, uint8 pos): layer(layer), pos(pos) {}
 		Chunk::~Chunk() {}
 
 		void Chunk::set(uint8 x, uint8 y, uint8 z, VoxelI_t voxel, VoxelM_t meta) {
@@ -20,5 +22,7 @@ namespace ge {
 			GE_Assert(GE_CheckChunkBounds(x, y, z), "Position [{x}, {y}, {z}] is out of bounds!");
 			return metas[x][y][z];
 		}
+
+		ChunkPos3 Chunk::getPos() const { return ChunkPos3(layer->getPos(), pos); }
 	}
 }

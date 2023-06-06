@@ -1,4 +1,5 @@
 #include "ClientLayer.hpp"
+#include "ClientLayer2D.hpp"
 
 #include <GenesisClient/Entry.hpp>
 #include <GenesisClient/Genesis.hpp>
