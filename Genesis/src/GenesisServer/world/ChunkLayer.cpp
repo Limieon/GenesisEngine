@@ -1,12 +1,13 @@
 #include "ChunkLayer.hpp"
 
 #include "Chunk.hpp"
+#include "World.hpp"
 
 #include <GenesisCore/Logger.hpp>
 
 namespace ge {
 	namespace server {
-		ChunkLayer::ChunkLayer(const ChunkPos2& pos): pos(pos) {}
+		ChunkLayer::ChunkLayer(World* world, const ChunkPos2& pos): world(world), pos(pos) {}
 		ChunkLayer::~ChunkLayer() {
 			for(uint8 i = 0; i < highestChunkPos; ++i) {
 				delete chunks[i];

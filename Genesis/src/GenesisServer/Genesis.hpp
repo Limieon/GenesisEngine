@@ -9,3 +9,4 @@
 /* ---> /world <--- */
 #include "GenesisServer/world/Chunk.hpp"
 #include "GenesisServer/world/ChunkLayer.hpp"
+#include "GenesisServer/world/World.hpp"

@@ -4,12 +4,12 @@
 namespace ge {
 	namespace server {
 		class Chunk;
-		class World;
+		class ChunkLayer;
 
-		class ChunkLayer {
+		class World {
 		public:
-			ChunkLayer(World* world, const ChunkPos2& pos);
-			virtual ~ChunkLayer();
+			World(const String& id);
+			virtual ~World();
 
 			/**
 			 * @brief Set a voxel inside a chunk without triggering an update
@@ -65,33 +65,39 @@ namespace ge {
 			VoxelM_t getMeta(uint32 x, uint32 y, uint32 z) const;
 
 			/**
-			 * @brief Gets the position of this chunk layer
-			 *
-			 * @return The position
-			 */
-			inline ChunkPos2 getPos() const { return pos; }
-			/**
 			 * @brief Gets a chunk at a given height
 			 *
 			 * @param pos The y pos of the chunk
 			 * @return The chunk
 			 */
-			Chunk* getChunk(uint8 pos) const { return chunks[pos]; }
+			inline ChunkLayer* getChunk(i16vec2 pos) const;
+			/**
+			 * @brief Gets a chunk at a given height
+			 *
+			 * @param x The x pos of the chunk
+			 * @param z The z pos of the chunk
+			 * @return The chunk
+			 */
+			inline ChunkLayer* getChunk(int16 x, int16 z) const;
 
 			/**
-			 * @brief Reserve chunks in this layer until a specific height
+			 * @brief Gets the world's id
 			 *
-			 * @param highestPost The highest height of the chunk to reserve (lowest is 0)
+			 * @return The id
 			 */
-			void reserveChunksUntil(uint8 highestPost);
+			inline const String& getID() const { return id; }
+
+			/**
+			 * @brief Initializes a new chunk at a given chunk pos
+			 *
+			 * @param pos The pos of the chunk
+			 */
+			void initChunk(i16vec2 pos);
 
 		private:
-			Chunk* chunks[CHUNK_WORLD_HEIGHT] = {nullptr};
-			uint8 highestChunkPos = 0;
+			String id;
 
-			ChunkPos2 pos;
-
-			World* world;
+			std::unordered_map<i16vec2, ChunkLayer*> chunks;
 		};
 	}
 }

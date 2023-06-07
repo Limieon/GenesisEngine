@@ -55,12 +55,23 @@ typedef uint16 VoxelI_t;
 /// @brief Voxel Meta
 typedef uint8 VoxelM_t;
 
+/* ---> Utiltiy Macros <--- */
+/**
+ * @brief Create function definitions for operator overloads used for 2d vectors
+ *
+ */
+#define GE_VectorOperatorOverloads(type)                                                                                                             \
+	bool operator==(const type& a, const type& b);                                                                                                   \
+	bool operator!=(const type& a, const type& b)
+
 /* ---> Voxels / Chunks <--- */
 namespace ge {
 	/// @brief The axis length in voxels of a single chunk
 	constexpr uint32 CHUNK_SIZE = 32;
 	/// @brief The height of the entire world, measured in chunks
 	constexpr uint32 CHUNK_WORLD_HEIGHT = 32;
+	/// @brief To use multiplications instead of divisons for converting block pos to chunk pos
+	constexpr float32 ONE_OVER_CHUNK_SIZE = 1.f / CHUNK_SIZE;
 
 	/// @brief The amount of voxels contained in a chunk
 	constexpr uint32 CHUNK_VOLUME = CHUNK_SIZE * CHUNK_SIZE * CHUNK_SIZE;
@@ -120,15 +131,29 @@ namespace ge {
 typedef glm::vec<3, uint32, glm::defaultp> uvec3;
 typedef glm::vec<3, uint8, glm::defaultp> u8vec3;
 typedef glm::vec<2, int32, glm::defaultp> ivec2;
+typedef glm::vec<2, int16, glm::defaultp> i16vec2;
 
 typedef glm::ivec3 ivec3;
+
+/* ---> Operator Overloads for those vectors */
+GE_VectorOperatorOverloads(uvec3);
+GE_VectorOperatorOverloads(u8vec3);
+
+GE_VectorOperatorOverloads(ivec2);
+GE_VectorOperatorOverloads(i16vec2);
+
+GE_VectorOperatorOverloads(ivec3);
 
 /* ---> Poisitions <--- */
 namespace ge {
 	struct ChunkPos2 {
-		ChunkPos2(uint32 x, uint32 y): x(x), z(z) {}
+		ChunkPos2(int16 x, int16 y): x(x), z(z) {}
+		ChunkPos2(const i16vec2& vec): x(vec.x), z(vec.y) {}
 
-		uint32 x, z;
+		inline i16vec2 toI16Vec2() const { return i16vec2(x, z); }
+		inline operator i16vec2() const { return toI16Vec2(); }
+
+		int16 x, z;
 	};
 
 	struct ChunkPos3 {
@@ -170,4 +195,34 @@ using Ref = std::shared_ptr<T>;
 template<typename T, typename... Args>
 constexpr Ref<T> createRef(Args&&... args) {
 	return std::make_shared<T>(std::forward<Args>(args)...);
+}
+
+// Combines certain values to hashes together
+inline void hash_combine(std::size_t& seed) {}
+template<typename T, typename... Rest>
+inline void hash_combine(std::size_t& seed, const T& v, Rest... rest) {
+	std::hash<T> hasher;
+	seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+	hash_combine(seed, rest...);
+}
+
+// Makes a class hashable (fields have to start with t.)
+#define GE_MakeHashable(type, ...)                                                                                                                   \
+	namespace std {                                                                                                                                  \
+		template<>                                                                                                                                   \
+		struct hash<type> {                                                                                                                          \
+			std::size_t operator()(const type& t) const {                                                                                            \
+				std::size_t ret = 0;                                                                                                                 \
+				hash_combine(ret, __VA_ARGS__);                                                                                                      \
+				return ret;                                                                                                                          \
+			}                                                                                                                                        \
+		};                                                                                                                                           \
+	}
+
+// Create hash functions for the common types used in maps
+namespace std {
+	template<>
+	struct hash<i16vec2> {
+		std::size_t operator()(const i16vec2& t) const { return (t.x << 16) | t.y; }
+	};
 }
