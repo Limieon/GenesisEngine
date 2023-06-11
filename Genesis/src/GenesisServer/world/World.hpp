@@ -91,8 +91,9 @@ namespace ge {
 			 * @brief Initializes a new chunk at a given chunk pos
 			 *
 			 * @param pos The pos of the chunk
+			 * @return The initialized chunk layer
 			 */
-			void initChunk(i16vec2 pos);
+			ChunkLayer* initChunk(i16vec2 pos);
 
 		private:
 			String id;

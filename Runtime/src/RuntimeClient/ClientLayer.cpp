@@ -27,17 +27,13 @@ namespace runtime {
 		GE_Info("VoxelID: {}", ge::server::GameRegistry::getVoxelID(voxel2->getUnlocalizedName()));
 
 		ge::server::World world("world");
-		world.initChunk({0, 0});
-		world.getChunk({0, 0})->reserveChunksUntil(1);
+		world.initChunk({0, 0})->reserveChunksUntil(1);
 		world.set(27, 34, 31, ge::server::GameRegistry::getVoxelID(voxel3->getUnlocalizedName()));
 		GE_Info("Voxel [27, 34, 31]: {}", ge::server::GameRegistry::getUnlocalizedName(world.getVoxel(27, 34, 31)));
 
 		GE_Info(voxel->getUnlocalizedName());
 
 		ge::server::GameRegistry::release();
-		delete voxel;
-		delete voxel2;
-		delete voxel3;
 	}
 	void ClientLayer::onUpdate(ge::core::Timestep ts) {
 		ge::client::RenderCommand::clear();

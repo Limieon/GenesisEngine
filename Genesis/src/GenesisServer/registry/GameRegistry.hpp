@@ -6,7 +6,7 @@ namespace ge {
 	namespace server {
 		class GameRegistry {
 		public:
-			using VoxelIDMap = std::unordered_map<String, VoxelI_t>;
+			using VoxelIDMap = std::unordered_map<std::string, VoxelI_t>;
 			using VoxelArray = std::vector<Voxel*>;
 
 			struct VoxelData {
@@ -20,17 +20,17 @@ namespace ge {
 
 			static void registerVoxel(Voxel* voxel);
 
-			static inline VoxelI_t getVoxelID(const String& unlocalizedName) { return vData->map[unlocalizedName]; }
-			static inline String getUnlocalizedName(VoxelI_t id) { return vData->array[id]->getUnlocalizedName(); }
+			static inline VoxelI_t getVoxelID(const String& unlocalizedName) { return vData.map[unlocalizedName]; }
+			static inline String getUnlocalizedName(VoxelI_t id) { return vData.array[id]->getUnlocalizedName(); }
 
-			static inline const Voxel& getVoxel(const String& unlocalizedName) { return *vData->array[getVoxelID(unlocalizedName)]; }
-			static inline const Voxel& getVoxel(VoxelI_t id) { return *vData->array[id]; }
+			static inline const Voxel& getVoxel(const String& unlocalizedName) { return *vData.array[getVoxelID(unlocalizedName)]; }
+			static inline const Voxel& getVoxel(VoxelI_t id) { return *vData.array[id]; }
 
 		public:
 			static void debugPrintData();
 
 		private:
-			static GameRegistry::VoxelData* vData;
+			static GameRegistry::VoxelData vData;
 		};
 	}
 }

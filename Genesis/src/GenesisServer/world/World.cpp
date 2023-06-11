@@ -26,6 +26,10 @@ namespace ge {
 		ChunkLayer* World::getChunk(i16vec2 pos) const { return chunks.at(pos); }
 		ChunkLayer* World::getChunk(int16 x, int16 z) const { return chunks.at(i16vec2(x, z)); }
 
-		void World::initChunk(i16vec2 pos) { chunks[pos] = new ChunkLayer(this, pos); }
+		ChunkLayer* World::initChunk(i16vec2 pos) {
+			auto chunk = new ChunkLayer(this, pos);
+			chunks[pos] = chunk;
+			return chunk;
+		}
 	}
 }
