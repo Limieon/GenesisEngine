@@ -1,0 +1,20 @@
+# NodeJS
+node_modules/
+package-lock.json
+
+# Visual Studio
+.vs/
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+*.sln
+
+# ThirdParty
+ThirdParty/spdlog/
+ThirdParty/fmt/
+
+# Bin Dirs
+bin/
+bin-int/
+
+lib/

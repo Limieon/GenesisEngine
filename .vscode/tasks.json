@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "premake-vs2022",
+            "type": "shell",
+            "command": "premake5.exe",
+            "args": [
+                "vs2022"
+            ],
+            "group": "build"
+        },
+        {
+            "label": "build-debug-x64",
+            "type": "shell",
+            "command": "msbuild",
+            "args": [
+                "/p:Configuration=Debug-x64",
+                "/p:Platform=x64",
+                "-verbosity:minimal"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "premake-vs2022"
+        },
+        {
+            "label": "build-release-x64",
+            "type": "shell",
+            "command": "msbuild",
+            "args": [
+                "/p:Configuration=Release-x64",
+                "/p:Platform=x64",
+                "-verbosity:minimal"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "premake-vs2022"
+        },
+        {
+            "label": "build-dist-x64",
+            "type": "shell",
+            "command": "msbuild",
+            "args": [
+                "/p:Configuration=Dist-x64",
+                "/p:Platform=x64",
+                "-verbosity:minimal"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile",
+            "dependsOn": "premake-vs2022"
+        }
+    ]
+}
