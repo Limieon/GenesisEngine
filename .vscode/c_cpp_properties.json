@@ -3,7 +3,17 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/src/**"
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/include/**",
+                "${workspaceFolder}/Dependencies/fmt/include/**",
+                "${workspaceFolder}/Dependencies/spdlog/include/**",
+                "${workspaceFolder}/Dependencies/bgfx/include/**",
+                "${workspaceFolder}/Dependencies/bimg/include/**",
+                "${workspaceFolder}/Dependencies/bx/include/**",
+                "${workspaceFolder}/Dependencies/lodepng/**",
+                "${workspaceFolder}/Dependencies/miniz/**",
+                "${workspaceFolder}/Dependencies/bgfx/3rdparty/dear-imgui/**",
+                "${workspaceFolder}/Dependencies/glfw/include/**"
             ],
             "defines": [
                 "_DEBUG",

@@ -1,0 +1,13 @@
+{
+  "name": "genesisengine",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create_includes.js",
+  "type": "module",
+  "scripts": {
+    "create_includes": "node scripts/create_includes.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

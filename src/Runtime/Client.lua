@@ -12,14 +12,32 @@ project "Runtime.Client"
 	includedirs {
 		includeDirs["Genesis"],
 		includeDirs["spdlog"],
-		includeDirs["fmt"]
+		includeDirs["fmt"],
+		includeDirs["bgfx"],
+		includeDirs["bx"],
+		includeDirs["bimg"],
+		includeDirs["imgui"],
+		includeDirs["glfw"]
 	}
+
+	filter "system:windows"
+        includedirs {
+            "%{wks.location}/Dependencies/bx/include/compat/msvc"
+        }
 
 	links {
 		"ThirdParty.spdlog",
 		"ThirdParty.fmt",
+		"ThirdParty.bgfx",
+		"ThirdParty.bimg",
+		"ThirdParty.bx",
+		"ThirdParty.lodepng",
+		"ThirdParty.glfw",
 		"Runtime.Common",
 		"Genesis.Core",
 		"Genesis.Server",
 		"Genesis.Client",
+
+		"psapi",
+		"OpenGL32.lib"
 	}

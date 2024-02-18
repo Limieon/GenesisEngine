@@ -98,5 +98,6 @@
 		"numeric": "cpp",
 		"random": "cpp",
 		"unordered_set": "cpp"
-	}
+	},
+	"cmake.configureOnOpen": false
 }

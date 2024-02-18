@@ -4,3 +4,21 @@
 [submodule "Dependencies/fmt"]
 	path = Dependencies/fmt
 	url = https://github.com/fmtlib/fmt
+[submodule "Dependencies/bgfx"]
+	path = Dependencies/bgfx
+	url = https://github.com/bkaradzic/bgfx
+[submodule "Dependencies/bimg"]
+	path = Dependencies/bimg
+	url = https://github.com/bkaradzic/bimg
+[submodule "Dependencies/bx"]
+	path = Dependencies/bx
+	url = https://github.com/bkaradzic/bx
+[submodule "Dependencies/lodepng"]
+	path = Dependencies/lodepng
+	url = https://github.com/lvandeve/lodepng
+[submodule "Dependencies/miniz"]
+	path = Dependencies/miniz
+	url = https://github.com/richgel999/miniz
+[submodule "Dependencies/glfw"]
+	path = Dependencies/glfw
+	url = https://github.com/glfw/glfw

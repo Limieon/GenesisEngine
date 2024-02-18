@@ -53,19 +53,24 @@ workspace "GenesisEngine"
 	filter ""
 	
 	filter "system:windows"
-		defines {"GE_PLATFORM_WINDOWS"}
+		defines { "GE_PLATFORM_WINDOWS", "_CRT_SECURE_NO_WARNINGS" }
 
 		buildoptions { "/Zc:__cplusplus" }
 	filter "system:linux"
-		defines { "GE_PLATFORM_LINUX", "GE_PLATFORM_UNIX" }
+		defines { "GE_PLATFORM_LINUX", "GE_PLATFORM_UNIX", "BX_PLATFORM_LINUX" }
 	filter "system:macosx"
-		defines { "GE_PLATFORM_MACOSX" }
+		defines { "GE_PLATFORM_MACOSX", "BX_PLATFORM_OSX" }
 	filter ""
 
 	-- ThirdParty
 	group "Dependencies"
 	include "Dependencies/spdlog.lua"
 	include "Dependencies/fmt.lua"
+	include "Dependencies/bx.lua"
+	include "Dependencies/bimg.lua"
+	include "Dependencies/bgfx.lua"
+	include "Dependencies/lodepng.lua"
+	include "Dependencies/glfw.lua"
 
 	-- Genesis
     group "Genesis"
