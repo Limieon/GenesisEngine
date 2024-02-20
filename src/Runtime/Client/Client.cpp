@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <GLFW/glfw3native.h>
 #include <Genesis/Client/Client.hpp>
-#include <Genesis/Core/Core.hpp>
+#include <Genesis/Core/Logger.hpp>
 #include <Genesis/Server/Server.hpp>
 #include <Runtime/Common/Common.hpp>
 #include <bgfx/bgfx.h>
@@ -17,9 +17,9 @@ uint16_t height = 1080;
 GLFWwindow* window;
 
 int main(int argc, char** argv) {
-	std::cout << "Starting Client..." << std::endl;
+	GE_Info("Starting Client...");
 
-	ge::core::Core::init();
+	ge::core::Logger::init();
 	rt::common::Common::init();
 	ge::server::Server::init();
 	ge::client::Client::init();
@@ -57,5 +57,8 @@ int main(int argc, char** argv) {
 		glfwPollEvents();
 	}
 
+	GE_Info("Shutting down...");
+
 	bgfx::shutdown();
+	ge::core::Logger::release();
 }

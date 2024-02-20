@@ -17,7 +17,8 @@ project "Runtime.Client"
 		includeDirs["bx"],
 		includeDirs["bimg"],
 		includeDirs["imgui"],
-		includeDirs["glfw"]
+		includeDirs["glfw"],
+		includeDirs["glm"]
 	}
 
 	filter "system:windows"

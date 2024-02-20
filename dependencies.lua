@@ -12,6 +12,8 @@ includeDirs["miniz"] = "%{wks.location}/Dependencies/miniz/"
 includeDirs["imgui"] = "%{wks.location}/Dependencies/bgfx/3rdparty/dear-imgui/"
 includeDirs["glfw"] = "%{wks.location}/Dependencies/glfw/include/"
 
+includeDirs["glm"] = "%{wks.location}/Dependencies/glm/"
+
 
 includeDirs["Genesis"] = "%{wks.location}/src/"
 includeDirs["Runtime"] = "%{wks.location}/src/"

@@ -13,7 +13,8 @@
                 "${workspaceFolder}/Dependencies/lodepng/**",
                 "${workspaceFolder}/Dependencies/miniz/**",
                 "${workspaceFolder}/Dependencies/bgfx/3rdparty/dear-imgui/**",
-                "${workspaceFolder}/Dependencies/glfw/include/**"
+                "${workspaceFolder}/Dependencies/glfw/include/**",
+                "${workspaceFolder}/Dependencies/glm/**"
             ],
             "defines": [
                 "_DEBUG",
